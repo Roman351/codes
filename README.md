@@ -1,1 +1,2 @@
-# Selamun aleyküm değerli orospu çocukları..
+# You are pinged
+
