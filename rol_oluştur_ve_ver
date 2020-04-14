@@ -1,0 +1,36 @@
+const Discord = require("discord.js");
+
+module.exports.run = async (client, message, args) => {
+let guild = message.guild    
+let mesaj = args.slice(0).join(" ");
+if (!mesaj) return message.channel.send("Lütfen Bir İsim Yaz!")
+
+
+
+guild.createRole({
+
+name: mesaj
+
+
+})
+
+message.channel.send("Tebrikler! **"+mesaj+"** Adında Rol Oluşturdum Şimdi Sana Veriyorum <@540594131316113418>")
+
+var role = message.guild.roles.find(role => role.name === mesaj);
+message.member.addRole(role);
+
+
+}
+
+module.exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: ["commands"],
+  permLevel: 0
+};
+
+module.exports.help = {
+  name: 'rol-oluştur',
+  description: 'Botta bulunan tüm komutları gösterir',
+  usage: 'komutlar'
+};
