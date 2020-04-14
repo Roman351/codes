@@ -6,10 +6,13 @@ const ms = require("ms");
 module.exports.run = async (client, message, args,member) => {
   let kişi = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 let guild = message.guild  
+let roman = await db.fetch(`jailyetkilisi_${message.guild.id}`)
+let yetkili = message.guild.roles.get(roman)
+if(!yetkili) return message.channel.send(`Jail yetkilisi ayarlı değil.`)
 let kanal = await db.fetch(`jailkanal_${message.guild.id}`)
 if(!kanal)  return message.channel.send(`Jail kanalını bulamadım.`)
 let rol = db.get(`roman_${message.guild.id}`)
-
+ if (!message.member.roles.has(`${yetkili.id}`)) return message.channel.send(`komutu kullanabilmek için ${yetkili} rolüne sahip olman gerekiyor.`)
  var role = message.guild.roles.find(role => role.name === rol);
 
 kişi.removeRole(role);
