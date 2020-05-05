@@ -14,7 +14,7 @@ message.channel.send("Başarıyla Uyardım.")
 kişi.send("**"+message.guild.name+"** Sunucusundan Bir Uyarı Aldın! ```"+mesaj+"```")
 
 
-db.set(`endlesscode_${message.guild.id}`, mesaj)
+db.set(`roman_${message.guild.id}`, mesaj)
 
 
 
